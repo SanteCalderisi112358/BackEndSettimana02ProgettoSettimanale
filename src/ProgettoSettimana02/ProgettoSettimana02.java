@@ -37,7 +37,7 @@ public class ProgettoSettimana02 {
 			System.out.println("3. Fai una ricerca per ISBN");
 			System.out.println("4. Fai una ricerca per anno di pubblicazione");
 			System.out.println("5. Fai una ricerca per autore");
-			System.out.println("6. Elimina il catalogo");
+			System.err.println("6. Elimina il catalogo");
 			System.out.println("7. Stampa catalogo");
 			System.out.println("0. Esci");
 
