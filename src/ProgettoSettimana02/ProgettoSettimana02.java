@@ -40,6 +40,7 @@ public class ProgettoSettimana02 {
 			System.out.println("4. Fai una ricerca per anno di pubblicazione");
 			System.out.println("5. Fai una ricerca per autore");
 			System.out.println("6. Elimina il catalogo");
+			System.out.println("7. Stampa catalogo");
 			System.out.println("0. Esci");
 
 			scelta = Integer.parseInt(input.nextLine());
@@ -72,7 +73,7 @@ public class ProgettoSettimana02 {
 
 						};
 						catalogo.put(isbnRSup, rivistaSupplier.get());
-//						riscriviCatalogo(catalogo, file);
+						riscriviCatalogo(catalogo, file);
 						System.out.println(
 								"Hai inserito correttamente la Rivista " + "'" + titoloRSup + "' nel catalogo");
 						System.out.println("**********");
@@ -97,7 +98,7 @@ public class ProgettoSettimana02 {
 
 						};
 						catalogo.put(isbnLSup, libroSupplier.get());
-						// riscriviCatalogo(catalogo, file);
+						riscriviCatalogo(catalogo, file);
 
 						System.out.println("Hai inserito correttamente il Libro " + "'" + titoloLSup + "'" + " di "
 								+ autoreLSup + " nel catalogo");
@@ -117,7 +118,7 @@ public class ProgettoSettimana02 {
 				} catch (NumberFormatException e) {
 					System.out.println("Inserisci un numero.");
 				}
-				riscriviCatalogo(catalogo, file);
+
 				break;
 			case 2:
 				System.out.println("Inserisci il codice ISBN dell'elemento da rimuovere");
@@ -135,6 +136,7 @@ public class ProgettoSettimana02 {
 								+ (elementoRimosso instanceof Rivista ? "stata rimossa" : "stato rimosso")
 								+ " dal Catalogo Bibliotecario");
 						riscriviCatalogo(catalogo, file);
+						System.out.println("**********");
 
 					} else {
 						System.out.println("L'elemento con ISBN " + isbnDaRimuovere
@@ -227,16 +229,33 @@ public class ProgettoSettimana02 {
 				break;
 
 			case 6:
-				catalogo.clear();
+
 				try {
-					for (Map.Entry<String, Cartaceo> chiaveValore : catalogo.entrySet()) {
 
-						FileUtils.writeStringToFile(file, "" + System.lineSeparator(), "UTF-8", true);
-
-					}
+					FileUtils.writeStringToFile(file, "", "UTF-8", false);
+					catalogo.clear();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
+			case 7:
+				System.out.println("Catalogo completo:");
+				catalogo.values().forEach(elemento -> {
+
+					String nomeElemento = elemento.getTitolo();
+					System.out.println(" '" + nomeElemento + "'");
+					System.out.println("Numero di pagine = " + elemento.getNumeroPagine());
+					System.out.println("Anno di pubblicazione = " + elemento.getAnnoPubblicazione());
+					if (elemento instanceof Libro) {
+						Libro libro = (Libro) elemento;
+						System.out.println("Genere = " + libro.getGenere());
+						System.out.println("Autore = " + libro.getAutore());
+					} else if (elemento instanceof Rivista) {
+						Rivista rivista = (Rivista) elemento;
+						System.out.println("Periodicità = " + rivista.getPeriodicita());
+					}
+					System.out.println("**********");
+				});
 				break;
 
 			case 0:
