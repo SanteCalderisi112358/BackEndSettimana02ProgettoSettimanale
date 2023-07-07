@@ -8,10 +8,9 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import org.apache.commons.io.FileUtils;
-import org.slf4j.LoggerFactory;
 
 public class ProgettoSettimana02 {
-	private static final org.slf4j.Logger log = LoggerFactory.getLogger(ProgettoSettimana02.class);
+
 
 	public static void main(String[] args) {
 
@@ -20,8 +19,7 @@ public class ProgettoSettimana02 {
 		Scanner input = new Scanner(System.in);
 		int scelta = 0;
 
-		// Dichiaro una Map catalogo dove utilizzo il codice isbn come chiave della
-		// coppia chiave-valore
+
 		Map<String, Cartaceo> catalogo = new HashMap<String, Cartaceo>();
 		File file = new File("Catalogo.txt");
 
