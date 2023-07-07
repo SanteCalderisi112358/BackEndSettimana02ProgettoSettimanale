@@ -70,8 +70,9 @@ public class ProgettoSettimana02 {
 							return new Rivista(isbnRSup, titoloRSup, annoPubRSup, numPagSup, periodicitaRSup);
 
 						};
-						catalogo.put(isbnRSup, rivistaSupplier.get());
 						riscriviCatalogo(catalogo, file);
+						catalogo.put(isbnRSup, rivistaSupplier.get());
+
 						System.out.println(
 								"Hai inserito correttamente la Rivista " + "'" + titoloRSup + "' nel catalogo");
 						System.out.println("**********");
@@ -95,8 +96,9 @@ public class ProgettoSettimana02 {
 							return new Libro(isbnLSup, titoloLSup, annoPubLSup, numPagLSup, autoreLSup, genereLSup);
 
 						};
-						catalogo.put(isbnLSup, libroSupplier.get());
 						riscriviCatalogo(catalogo, file);
+						catalogo.put(isbnLSup, libroSupplier.get());
+
 
 						System.out.println("Hai inserito correttamente il Libro " + "'" + titoloLSup + "'" + " di "
 								+ autoreLSup + " nel catalogo");
@@ -230,7 +232,7 @@ public class ProgettoSettimana02 {
 
 				try {
 
-					FileUtils.writeStringToFile(file, "", "UTF-8", false);
+					FileUtils.writeStringToFile(file, "", "UTF-8");
 					catalogo.clear();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -283,7 +285,7 @@ public class ProgettoSettimana02 {
 				String anno = chiaveValore.getValue().getAnnoPubblicazione();
 				int numPagine = chiaveValore.getValue().getNumeroPagine();
 				String elementoCatalogo = isbn + " - " + titolo + " - " + anno + " - " + numPagine + " pagine";
-				FileUtils.writeStringToFile(percorsoFile, elementoCatalogo + System.lineSeparator(), "UTF-8", true);
+				FileUtils.writeStringToFile(percorsoFile, elementoCatalogo + System.lineSeparator(), "UTF-8");
 
 			}
 		} catch (Exception e) {
